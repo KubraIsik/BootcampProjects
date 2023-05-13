@@ -36,7 +36,7 @@ For **PARAMATER EXPLANATIONS**, please go to site: [Input Parameters Explanation
 
 st.sidebar.write(f'### Please select values of the house:')
 
-df1 = pd.read_csv(f'E:\Stream_lit_Projects\All_homeworks\dataFrames\house_price.csv')
+df1 = pd.read_csv(f'E:\Stream_lit_Projects\All_homeworks\dataSets\house_price.csv')
 
 #columns_range_list = functions.df_columns_value_range(df1)
 
