@@ -22,6 +22,14 @@ st.write(
        """
 )
 
+uploaded_file = st.file_uploader(
+    "Choose your database", accept_multiple_files=False)
+if uploaded_file is not None:
+    file_name = uploaded_file
+else:
+    file_name = "DatabaseSample.jpg"
+
+
 image = Image.open('houseprice.jpg')
 st.image(image, use_column_width=True)
 
