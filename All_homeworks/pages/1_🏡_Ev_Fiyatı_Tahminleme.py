@@ -12,7 +12,7 @@ st.set_page_config(page_title="Ev Fiyatı Tahminleme", page_icon="🏡")
 st.markdown("# 🏡 Ev Fiyatı Tahminleme ")
 st.sidebar.header(" 🏡 Ev Fiyatı Tahminleme ")
 st.write(
-    """**Amaç :** elimizdeki verilere göre eğitimiz model ile ev fiyatı tahminleme.
+    """**Amaç :** elimizdeki verilere göre eğittiğimiz model ile ev fiyatı tahminleme.
        \nBurada bir regresyon problemi üzerine çalıştık. 
        Evin konumu, garaj sayısı gibi birçok özelliğine göre bir evin sahip olabileceği olası değeri tahmin ediyoruz. 
        \n **👇Aşağıdaki tahminleme aracına istediğiniz değerleri girerek tahmin sonuçlarını 👈yanda görüntüleyebilirsiniz:**
@@ -23,7 +23,6 @@ st.write(
 
 #image = Image.open('/Users/birsenbas/Desktop/Kodluyoruz/streamlit/houseprice.jpg')
 #st.image(image, use_column_width=True)
-
 
 st.write("""
 ## Get the Price for Your New House !!
@@ -36,7 +35,7 @@ For **PARAMATER EXPLANATIONS**, please go to site: [Input Parameters Explanation
 
 st.sidebar.write(f'### Please select values of the house:')
 
-df1 = pd.read_csv(f'E:\Stream_lit_Projects\All_homeworks\dataSets\house_price.csv')
+df1 = pd.read_csv(f'\dataSets\house_price.csv')
 
 #columns_range_list = functions.df_columns_value_range(df1)
 
@@ -93,7 +92,7 @@ st.write(user_sample)
 
 
 # load the house price model
-filename = f'E:\Stream_lit_Projects\All_homeworks\models\house_price_Model.sav'
+filename = f'\\models\house_price_Model.sav'
 house_price_model = pickle.load(open(filename, 'rb'))
 
 prediction = house_price_model.predict(user_sample)
@@ -110,16 +109,19 @@ st.sidebar.success(f"###  👉 Ev fiyatı tahmin: ${prediction}")
 # eş zamanlı olarak aşağıdaki plot a eklenip gösterilebilir mi?
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
-last_rows = np.random.randn(1, 1)
+#last_rows = np.random.randn(1, 1)
+last_rows = prediction
 chart = st.line_chart(last_rows)
 
-for i in range(1, 101):
-    new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-    status_text.text("%i%% Complete" % i)
-    chart.add_rows(new_rows)
-    progress_bar.progress(i)
-    last_rows = new_rows
-    time.sleep(0.05)
+#for i in range(1, 101):
+if user_sample.any:
+	new_rows = last_rows[-1] + prediction #np.random.randn(5, 1).cumsum(axis=0)
+	#new_rows = prediction
+		#status_text.text("%i%% Complete" % i)
+	chart.add_rows(new_rows)
+		#progress_bar.progress(i)
+	last_rows = new_rows
+time.sleep(0.05)
 
 progress_bar.empty()
 
@@ -129,6 +131,7 @@ progress_bar.empty()
 st.button("Re-run")
 
 
+# Plot Animation
 #progress_bar = st.sidebar.progress(0)
 #status_text = st.sidebar.empty()
 #last_rows = np.random.randn(1, 1)
