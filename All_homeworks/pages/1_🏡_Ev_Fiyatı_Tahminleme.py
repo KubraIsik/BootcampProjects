@@ -35,7 +35,7 @@ For **PARAMATER EXPLANATIONS**, please go to site: [Input Parameters Explanation
 
 st.sidebar.write(f'### Please select values of the house:')
 
-df1 = pd.read_csv(f'\dataSets\house_price.csv')
+df1 = pd.read_csv('\dataSets\house_price.csv')
 
 #columns_range_list = functions.df_columns_value_range(df1)
 
@@ -92,7 +92,7 @@ st.write(user_sample)
 
 
 # load the house price model
-filename = f'\\models\house_price_Model.sav'
+filename = '\models\house_price_Model.sav'
 house_price_model = pickle.load(open(filename, 'rb'))
 
 prediction = house_price_model.predict(user_sample)
