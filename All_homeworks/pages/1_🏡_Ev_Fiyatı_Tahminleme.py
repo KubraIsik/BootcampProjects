@@ -22,7 +22,7 @@ st.write(
        """
 )
 
-image = Image.open('/Users/birsenbas/Desktop/Kodluyoruz/streamlit/houseprice.jpg')
+image = Image.open('houseprice.jpg')
 st.image(image, use_column_width=True)
 
 st.write("""
