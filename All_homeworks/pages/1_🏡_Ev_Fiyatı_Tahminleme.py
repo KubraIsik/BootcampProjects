@@ -4,6 +4,7 @@ import time
 import numpy as np
 import pandas as pd
 import pickle
+from PIL import Image
 
 import functions
 
@@ -21,8 +22,8 @@ st.write(
        """
 )
 
-#image = Image.open('/Users/birsenbas/Desktop/Kodluyoruz/streamlit/houseprice.jpg')
-#st.image(image, use_column_width=True)
+image = Image.open('/Users/birsenbas/Desktop/Kodluyoruz/streamlit/houseprice.jpg')
+st.image(image, use_column_width=True)
 
 st.write("""
 ## Get the Price for Your New House !!
