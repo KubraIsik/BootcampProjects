@@ -6,6 +6,7 @@ from sklearn.metrics import r2_score
 from PIL import Image
 from sklearn.preprocessing import StandardScaler
 import pickle
+import sys
 
 st.set_page_config(page_title="Pazarlama Kampanyası", page_icon="📊")
 
