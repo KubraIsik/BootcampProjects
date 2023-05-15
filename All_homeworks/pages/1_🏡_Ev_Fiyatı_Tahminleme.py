@@ -25,7 +25,7 @@ st.write(
 )
 
 
-image = Image.open('pages/houseprice.jpg')
+image = Image.open('images/houseprice.jpg')
 st.image(image, use_column_width=True)
 
 st.write("""
