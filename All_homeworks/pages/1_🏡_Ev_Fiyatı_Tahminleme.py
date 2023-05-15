@@ -25,8 +25,8 @@ st.write(
 )
 
 
-#image = Image.open('houseprice.jpg')
-#st.image(image, use_column_width=True)
+image = Image.open('pages/houseprice.jpg')
+st.image(image, use_column_width=True)
 
 st.write("""
 ## Get the Price for Your New House !!
