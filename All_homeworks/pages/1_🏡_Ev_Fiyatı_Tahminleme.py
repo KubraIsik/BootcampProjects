@@ -7,6 +7,7 @@ import pickle
 from PIL import Image
 import sys
 
+
 import functions
 
 st.set_page_config(page_title="Ev Fiyatı Tahminleme", page_icon="🏡")
