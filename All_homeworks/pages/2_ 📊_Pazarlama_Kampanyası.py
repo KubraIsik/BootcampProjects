@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 import sys
 
+
 st.set_page_config(page_title="Pazarlama Kampanyası", page_icon="📊")
 
 st.markdown("# 📊 Pazarlama Kampanyası")
@@ -20,6 +21,8 @@ st.write(
 )
 
 image = Image.open('All_homeworks/pages/marketingcampaign.jpg')
+print(image)
+
 st.image(image, use_column_width=True)
 
 #put the heading
@@ -33,6 +36,7 @@ This apps predict the **Marketing Campaign Response**!
 
 #import dataset
 df = pd.read_csv("All_homeworks/pages/MarketingCampaign.csv")
+
 
 selectbox_list = ['Kidhome', 'Teenhome', 'NumDealsPurchases', 'NumWebPurchases',
        'NumCatalogPurchases', 'NumStorePurchases', 'NumWebVisitsMonth',
@@ -103,21 +107,27 @@ print(slider_dict)
 
 
 input_dict = {**box_dict, **slider_dict}
-dictf = pd.DataFrame(input_dict, index=[0])
-df = df.append(dictf, ignore_index= True) 
 
-df.drop("Response", inplace=True,axis=1)
-scaler = StandardScaler()
-scaler.fit(df)
-df1 = pd.DataFrame(scaler.transform(df),index = df.index,columns = df.columns)
-features=pd.DataFrame(df1.iloc[[-1]])
+
+input_list = [tuple([input_dict['Year_Birth'],input_dict['Income']])] ## bu sekilde bizim X_testimze gore doldurman lazim.
+print(input_list)
+
+
 
 #import model with pickle
 with open('All_homeworks/pages/marketing_model.sav', 'rb') as f:
     model = pickle.load(f)
 
 #prediction
-ypred = model.predict(features)
+print(len(model.feature_names_in_)) 
+print(len(input_list[0]))
+# bu iki sayi birbirine esit olmali .
+
+predict_df = pd.DataFrame(input_list, columns= model.feature_names_in_)
+
+print(predict_df)
+ypred = model.predict(predict_df)
+print(ypred)
 st.subheader("Marketing campaign response")
 st.write(ypred)
 
