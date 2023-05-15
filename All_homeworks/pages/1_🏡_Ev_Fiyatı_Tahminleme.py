@@ -41,12 +41,10 @@ st.sidebar.write(f'### Please select values of the house:')
 
 
 # load dataset
-path_to_ds = '/dataSets/house_price_clean2.csv'
+# with open('house_price_clean2.csv', 'rb') as file:
+#     df1 = pd.read_csv(file)
 
-with open(path_to_ds, 'rb') as file:
-    df1 = pd.read_csv(file)
-
-df1 = pd.read_csv(f'dataSets/house_price.csv')
+#df1 = pd.read_csv(f'dataSets/house_price.csv')
 
 #columns_range_list = functions.df_columns_value_range(df1)
 
@@ -102,8 +100,7 @@ st.subheader("User Input parameters")
 st.write(user_sample)
 
 # load the house price model
-path_to_model = '/models/house_price_Model.sav'
-with open(path_to_ds, 'rb') as file:
+with open('house_price_Model.sav', 'rb') as file:
      house_price_model = pickle.load(file)
 # load the house price model
 # filename = f'models/house_price_Model.sav'
