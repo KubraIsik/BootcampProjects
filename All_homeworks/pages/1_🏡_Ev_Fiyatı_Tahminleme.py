@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import pickle
 from PIL import Image
+import sys
+import path
 
 import functions
 
@@ -36,6 +38,18 @@ For **PARAMATER EXPLANATIONS**, please go to site: [Input Parameters Explanation
 """)
 
 st.sidebar.write(f'### Please select values of the house:')
+
+
+dir = path.Path(__file__).abspath()
+sys.append.path(dir.parent.parent)
+
+# load dataset
+path_to_ds = './dataSets/house_price_clean2.csv'
+# with open(path_to_ds, 'rb') as file:
+#     model = pickle.load(file)
+
+with open(path_to_ds, 'rb') as file:
+    df1 = pd.read_csv(file)
 
 df1 = pd.read_csv(f'dataSets/house_price.csv')
 
@@ -92,10 +106,13 @@ user_sample = user_input_features()
 st.subheader("User Input parameters")
 st.write(user_sample)
 
-
 # load the house price model
-filename = f'models/house_price_Model.sav'
-house_price_model = pickle.load(open(filename, 'rb'))
+path_to_model = './models/house_price_Model.sav'
+with open(path_to_ds, 'rb') as file:
+     house_price_model = pickle.load(file)
+# load the house price model
+# filename = f'models/house_price_Model.sav'
+# house_price_model = pickle.load(open(filename, 'rb'))
 
 prediction = house_price_model.predict(user_sample)
 
