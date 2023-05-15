@@ -112,7 +112,7 @@ df1 = pd.DataFrame(scaler.transform(df),index = df.index,columns = df.columns)
 features=pd.DataFrame(df1.iloc[[-1]])
 
 #import model with pickle
-with open('All_homeworks/pages/marketing_model_dosyasi.pickle', 'rb') as f:
+with open('All_homeworks/pages/marketing_model_dosyasi.model', 'rb') as f:
     model = pickle.load(f)
 
 #prediction
