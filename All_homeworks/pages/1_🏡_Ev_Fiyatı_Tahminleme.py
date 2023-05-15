@@ -101,7 +101,7 @@ st.subheader("User Input parameters")
 st.write(user_sample)
 
 # load the house price model
-with open('./house_price_Model.sav', 'rb') as file:
+with open('All_homeworks/pages/house_price_Model.sav', 'rb') as file:
      house_price_model = pickle.load(file)
 # load the house price model
 # filename = f'models/house_price_Model.sav'
