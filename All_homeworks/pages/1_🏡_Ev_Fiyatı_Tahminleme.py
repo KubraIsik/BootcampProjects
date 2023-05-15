@@ -6,7 +6,6 @@ import pandas as pd
 import pickle
 from PIL import Image
 import sys
-import path
 
 import functions
 
@@ -40,13 +39,9 @@ For **PARAMATER EXPLANATIONS**, please go to site: [Input Parameters Explanation
 st.sidebar.write(f'### Please select values of the house:')
 
 
-dir = path.Path(__file__).abspath()
-sys.append.path(dir.parent.parent)
 
 # load dataset
 path_to_ds = './dataSets/house_price_clean2.csv'
-# with open(path_to_ds, 'rb') as file:
-#     model = pickle.load(file)
 
 with open(path_to_ds, 'rb') as file:
     df1 = pd.read_csv(file)
