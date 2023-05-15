@@ -113,7 +113,7 @@ df1 = pd.DataFrame(scaler.transform(df),index = df.index,columns = df.columns)
 features=pd.DataFrame(df1.iloc[[-1]])
 
 #import model with pickle
-with open('All_homeworks/pages/marketing_model_dosyasi.model', 'rb') as f:
+with open('All_homeworks/pages/marketing_model.sav', 'rb') as f:
     model = pickle.load(f)
 
 #prediction
@@ -125,7 +125,7 @@ st.write(ypred)
 
 # [`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
 
-st.sidebar.success(f"###  👉 Bu müşteri geri dönüş yapar mı(Evet/Hayır):")  
+#st.sidebar.success(f"###  👉 Bu müşteri geri dönüş yapar mı(Evet/Hayır):")  
 
 ### Farklı input alma yöntemleri
 #age = st.slider('GrLivArea: Üstü (zemin) oturma alanı metre karesi', 0, 130, 25)
