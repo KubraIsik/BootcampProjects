@@ -12,6 +12,10 @@ import numpy as np
 
 st.set_page_config(page_title="Marketing Campaign", page_icon="📊")
 
+image = Image.open('All_homeworks/images/marketingcampaign.jpg')
+print(image)
+st.image(image, use_column_width=True)
+
 st.markdown("# 📊 Marketing Campaign")
 st.sidebar.header("📊 Marketing Campaign")
 st.write(
@@ -89,44 +93,52 @@ for key, value in slider_overall_dict.items():
 
 
 input_dict = {**box_dict, **slider_dict}
+dictf = pd.DataFrame(input_dict, index=[0])
+df = df.append(dictf, ignore_index= True) 
 
 #st.table(input_dict)
 #input_list = [tuple([input_dict['Year_Birth'],input_dict['Income']])] ## bu sekilde bizim X_testimze gore doldurman lazim.
 #print(input_list)
 
-input_list=[input_dict['Year_Birth'], input_dict['Income'],input_dict['Kidhome'],input_dict['Teenhome'],input_dict['Recency'],
-input_dict['MntWines'],input_dict['MntFruits'],input_dict['MntMeatProducts'],input_dict['MntFishProducts'],
-input_dict['MntSweetProducts'],input_dict['MntGoldProds'],input_dict['NumDealsPurchases'],input_dict['NumWebPurchases'],
-input_dict['NumCatalogPurchases'],input_dict['NumStorePurchases'],input_dict['NumWebVisitsMonth'],input_dict['Education_en'],
-input_dict['Marital_Status_en']]
+#input_list=[input_dict['Year_Birth'], input_dict['Income'],input_dict['Kidhome'],input_dict['Teenhome'],input_dict['Recency'],
+#input_dict['MntWines'],input_dict['MntFruits'],input_dict['MntMeatProducts'],input_dict['MntFishProducts'],
+#input_dict['MntSweetProducts'],input_dict['MntGoldProds'],input_dict['NumDealsPurchases'],input_dict['NumWebPurchases'],
+#input_dict['NumCatalogPurchases'],input_dict['NumStorePurchases'],input_dict['NumWebVisitsMonth'],input_dict['Education_en'],
+#input_dict['Marital_Status_en']]
+
+df.drop("Response", inplace=True,axis=1)
+features=pd.DataFrame(df.iloc[[-1]])
 
 #import model with pickle
 with open('All_homeworks/models/marketing_model.sav', 'rb') as f:
     model = pickle.load(f)
 
-#prediction  
-arr_f_name = model.feature_names_in_
+#prediction
+ypred = model.predict(features)
+st.subheader("Marketing campaign response")
+st.write(ypred)
 
-columns= arr_f_name[:-1].tolist() # burada -1 yaptım çünkü Dt_Customer_en i almamak için
+#prediction  
+#arr_f_name = model.feature_names_in_
+
+#columns= arr_f_name[:-1].tolist() # burada -1 yaptım çünkü Dt_Customer_en i almamak için
 # Dt_Customer_en datadan çıkarılıp eklenirse  [:-1] yapmaya gerek yok
 
 
-predict_df = pd.DataFrame([input_list], columns= columns,index=[0])
-st.table(predict_df)
+#predict_df = pd.DataFrame([input_list], columns= columns,index=[0])
+#st.table(predict_df)
 # üstteki errorlar çözüldü.
 # burada hata veriyor. Çünkü Dt_Customer_en çıkarılıp model train edilip tekrar yüklenmesi gerekiyor
 # Dt_Customer_en ilk başta datadan çıkardığımız bir sürun idi.
 
-ypred = model.predict(predict_df)
+#ypred = model.predict(predict_df)
 
 
-st.write(ypred)
-st.subheader("Marketing campaign response")
+#st.write(ypred)
+#st.subheader("Marketing campaign response")
 # st.write(ypred)
-response = "Yes" if ypred == 0 else "No"
-st.success(f"###  👉 This customer response or not(Yes/No):",response)  
+#response = "Yes" if ypred == 0 else "No"
+#st.success(f"###  👉 This customer response or not(Yes/No):",response)  
 
-image = Image.open('All_homeworks/images/marketingcampaign.jpg')
-print(image)
-st.image(image, use_column_width=True)
+
 
