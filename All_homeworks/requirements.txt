@@ -5,4 +5,3 @@ pickleshare==0.7.5
 scikit-learn==1.2.1
 xgboost
 category_encoders
-pickle
