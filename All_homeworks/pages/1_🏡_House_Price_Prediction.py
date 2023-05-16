@@ -94,5 +94,5 @@ prediction = house_price_model.predict(user_sample_log)
 # Show Prediction result
 st.success(f"###  👉 Estimated price of this house: ${int(np.round(np.exp(prediction)))}") #  #{float(np.round(prediction,2))}")
 
-image = Image.open('All_homework/images/houseprice.jpg')
+image = Image.open('All_homeworks/images/houseprice.jpg')
 st.image(image, use_column_width=True)
