@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 import pickle
 from PIL import Image
-from category_encoders import TargetEncoder
 
 import functions
 
