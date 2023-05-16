@@ -12,9 +12,6 @@ import numpy as np
 
 st.set_page_config(page_title="Marketing Campaign", page_icon="📊")
 
-image = Image.open('All_homeworks/images/marketingcampaign.jpg')
-print(image)
-st.image(image, use_column_width=True)
 
 st.markdown("# 📊 Marketing Campaign")
 st.sidebar.header("📊 Marketing Campaign")
@@ -120,6 +117,10 @@ ypred = model.predict(features)
 
 # Show Prediction result
 st.success(f"###  👉 Marketing campaign response: {ypred}")
+
+image = Image.open('All_homeworks/images/marketingcampaign.jpg')
+print(image)
+st.image(image, use_column_width=True)
 
 #prediction  
 #arr_f_name = model.feature_names_in_
