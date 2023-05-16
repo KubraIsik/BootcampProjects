@@ -78,13 +78,15 @@ with st.container():
 
 
 # target_encoder import and transform
-f = 'All_homeworks/models/Target_Encoder.sav'
-target_encoder = pickle.load(open(f, 'rb'))
+#f = 'All_homeworks/models/Target_Encoder.sav'
+with open('All_homeworks/models/Target_Encoder.sav', 'rb') as f:
+	target_encoder = pickle.load(f)
 user_sample_encoded= target_encoder.transform(user_sample)
 user_sample_log = np.log1p(user_sample_encoded)
 
-filename = 'All_homeworks/models/house_price_model.sav'
-house_price_model = pickle.load(open(filename, 'rb'))
+#filename = 'All_homeworks/models/house_price_model.sav'
+with open('All_homeworks/models/house_price_model.sav', 'rb') as f:
+	house_price_model = pickle.load(f)
 # predict house
 prediction = house_price_model.predict(user_sample_log)
 
