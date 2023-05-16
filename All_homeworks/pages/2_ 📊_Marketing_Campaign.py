@@ -114,7 +114,7 @@ with open('All_homeworks/models/marketing_model.sav', 'rb') as f:
     model = pickle.load(f)
 
 #prediction
-#ypred = model.predict(features)
+ypred = model.predict(features)
 #st.subheader("Marketing campaign response")
 #st.write(ypred)
 
