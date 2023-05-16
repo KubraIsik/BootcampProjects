@@ -114,9 +114,12 @@ with open('All_homeworks/models/marketing_model.sav', 'rb') as f:
     model = pickle.load(f)
 
 #prediction
-ypred = model.predict(features)
-st.subheader("Marketing campaign response")
-st.write(ypred)
+#ypred = model.predict(features)
+#st.subheader("Marketing campaign response")
+#st.write(ypred)
+
+# Show Prediction result
+st.success(f"###  👉 "Marketing campaign response: ${int(np.round(np.exp(ypred)))}")
 
 #prediction  
 #arr_f_name = model.feature_names_in_
