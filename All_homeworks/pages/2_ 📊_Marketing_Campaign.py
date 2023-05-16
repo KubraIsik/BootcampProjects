@@ -119,7 +119,7 @@ ypred = model.predict(features)
 #st.write(ypred)
 
 # Show Prediction result
-st.success(f"###  👉 Marketing campaign response: ${ypred}")
+st.success(f"###  👉 Marketing campaign response: {ypred}")
 
 #prediction  
 #arr_f_name = model.feature_names_in_
