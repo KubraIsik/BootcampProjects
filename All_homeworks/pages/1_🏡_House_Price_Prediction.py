@@ -8,10 +8,10 @@ from PIL import Image
 
 import functions
 
-st.set_page_config(page_title="Local-House Price", page_icon="🏡")
+st.set_page_config(page_title="House Price Prediction", page_icon="🏡")
 
-st.markdown("# 🏡 Local-House Price")
-st.sidebar.header(" 🏡 Local-House Price")
+st.markdown("# 🏡 House Price Prediction")
+st.sidebar.header(" 🏡 House Price Prediction")
 st.write("""
 		## Let's Find Out the Price of Your New House !!
 		\n**This project aims** to predict estimated price of a house according to given values can be related with.
@@ -24,10 +24,6 @@ st.write("""
 
 st.sidebar.write('### Please select feature values of the house:')
 
-##df1 = pd.read_csv('All_homeworks/dataSets/house_price.csv')
-df1 = pd.read_csv('All_homeworks/dataSets/house_price.csv')
-
-#columns_range_list = functions.df_columns_value_range(df1)
 
 def user_input_features():
 	MSZoning = st.sidebar.selectbox("House zone", ("RL" ,"RM" ,"FV", "RH" ,"C(all)")) 
