@@ -1,0 +1,5 @@
+pandas
+numpy
+Streamlit
+pickleshare==0.7.5
+plotly
