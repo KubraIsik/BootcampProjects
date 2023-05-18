@@ -16,7 +16,7 @@ st.write("# Welcome to Streamlit! 👋")
 
 st.sidebar.success("Select a demo above.")
 
-df = load_data('data/clean_ismek.csv')
+df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
 
 
 left_column, right_column = st.columns(2)
