@@ -1,5 +1,7 @@
 pandas
 numpy
 Streamlit
-pickleshare==0.7.5
 plotly
+pickleshare==0.7.5
+scikit-learn==1.2.1
+xgboost
