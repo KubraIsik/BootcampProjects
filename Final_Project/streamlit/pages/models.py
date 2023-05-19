@@ -43,7 +43,7 @@ def label_encoding(df, target):
         
     return df, target_mapping ,encode_mapping
 
-df = load_data('data/clean_ismek.csv')
+df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
 
 
 st.write("# Welcome to Streamlit! 👋")
@@ -131,7 +131,7 @@ input_list = [tuple([encode['egitim_durumu'][egitim_durumu],
 
 
 print(input_list)
-with open('models/ismek_alan.sav', 'rb') as f:
+with open('Final_Project/streamlit/models/ismek_alan.sav', 'rb') as f:
     model = pickle.load(f)
 
 
