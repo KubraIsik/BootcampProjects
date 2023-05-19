@@ -54,7 +54,7 @@ col1, col2= st.columns([3, 3] ,  gap = 'small')
 
 with col2:
     st.write('\n')
-    col2.image('Final_Project/streamlit/models/hobipicture.jpg')
+    col2.image('Final_Project/streamlit/pages/hobipicture.jpg')
 
 with col1:
     st.write('\n')
