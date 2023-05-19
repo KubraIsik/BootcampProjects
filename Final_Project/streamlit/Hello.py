@@ -12,7 +12,25 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
-st.write("# Welcome to Streamlit! 👋")
+st.markdown("# 🎈 İSMEK Veri Analizi" )
+
+
+col1, col2= st.columns([3, 3] ,  gap = 'small')
+
+with col2:
+    st.write('\n')
+    col2.image('Final_Project/streamlit/hellopicture.jpg')
+
+with col1:
+    st.write('\n')
+    st.write('\n')
+
+    st.write(
+    """
+       ### Özelliklere göre dağılımları ve analizleri görebilirsiniz 🙂
+
+    """
+    )
 
 st.sidebar.success("Select a demo above.")
 
