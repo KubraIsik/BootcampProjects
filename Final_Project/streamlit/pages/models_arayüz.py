@@ -50,7 +50,7 @@ df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
 st.markdown("# 🎈 İSMEK Kurs Öneri Sistemi" )
 
 
-col1, col2= st.columns([3, 3] ,  gap = 'small')
+col1, col2= st.columns([4, 3] ,  gap = 'small')
 
 with col2:
     st.write('\n')
