@@ -15,7 +15,7 @@ def load_data(url):
 st.markdown("# 🎈 İSMEK Veri Analizi" )
 
 
-col1, col2= st.columns([3, 3] ,  gap = 'small')
+col1, col2= st.columns([4, 3] ,  gap = 'small')
 
 with col2:
     st.write('\n')
