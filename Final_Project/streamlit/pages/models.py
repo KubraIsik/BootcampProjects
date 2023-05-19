@@ -43,12 +43,12 @@ def label_encoding(df, target):
         
     return df, target_mapping ,encode_mapping
 
+# df = load_data('data/clean_ismek.csv')
 df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
 
 
 st.write("# Welcome to Streamlit! 👋")
 
-# st.sidebar.success("Select a demo above.")
 
 df_f2f = df[df['kurs_merkezi'] != 'Uzaktan Egitim'].copy()
 df_f2f = df_f2f[df_f2f.duplicated()].copy()
@@ -65,19 +65,11 @@ df_f2f_top5_back_up = df_f2f_top5.copy()
 del df_f2f_top5['hak_edilen_belge_tipi']
 del df_f2f_top5['program']
 
-# df_f2f_top3, target_mapping = label_encoding(df_f2f_top3, 'alan')
+
 
 df = df_f2f_top5.copy()
 
 df_f2f_top5, target_mapping,encode = label_encoding(df_f2f_top5, 'alan')
-
-
-
-
-
-# st.dataframe(df_f2f_top5)
-
-
 
 
 
@@ -127,22 +119,17 @@ input_list = [tuple([encode['egitim_durumu'][egitim_durumu],
                     encode['kurs_merkezi'][kurs_merkezi],
                     encode['kurs_merkezi_ilcesi'][kurs_merkezi_ilcesi],
                     encode['tercih_sebebi'][tercih_sebebi],
-                    encode['yas_araligi'][yas_araligi]])] ## bu sekilde bizim X_testimze gore doldurman lazim.
+                    encode['yas_araligi'][yas_araligi]])]
 
 
-print(input_list)
 with open('Final_Project/streamlit/models/ismek_alan.sav', 'rb') as f:
     model = pickle.load(f)
 
 
-print(type(model.feature_names_in_))
-print(len(model.feature_names_in_)) 
 
 predict_df = pd.DataFrame(input_list, columns= model.feature_names_in_)
 
 
-
-print(predict_df)
 
 if st.button('Predict...'):
 
@@ -156,8 +143,26 @@ if st.button('Predict...'):
     target_keys1 = [key for key, value in target_mapping.items() if value == class1]
     target_keys2 = [key for key, value in target_mapping.items() if value == class2]
 
-    st.success(f"Onerilen ilk alan : {target_keys1[0]}")
-    st.success(f"Onerilen ikinci alan : {target_keys2[0]}")
+    with open('Final_Project/streamlit/models/ismek_haketme.sav', 'rb') as f:
+        model_haketme = pickle.load(f)
+
+    class1_predict = predict_df.copy()
+    class2_predict = predict_df.copy()
+    class1_predict.insert(2, "alan", [class1], True)
+    class2_predict.insert(2, "alan", [class2], True)
+
+
+
+    ypred_haketme_class1 = model_haketme.predict(class1_predict)
+    y_pred_proba_haketme_class1  = model_haketme.predict_proba(class1_predict) * 100
+
+    ypred_haketme_class2 = model_haketme.predict(class2_predict)
+    y_pred_proba_haketme_class2 = model_haketme.predict_proba(class2_predict) * 100
+
+
+    
+    st.success(f"Onerilen ilk alan : **{target_keys1[0]}** 👉👉 Sertifika alma ihtimali :**%{int(y_pred_proba_haketme_class1[:,1][0])}**")
+    st.success(f"Onerilen ikinci alan : **{target_keys2[0]}** 👉👉 Sertifika alma ihtimali :**%{int(y_pred_proba_haketme_class2[:,1][0])}**")
 
 
     filter1 = df_f2f_top5_back_up['alan'] == target_keys1[0]
@@ -179,49 +184,3 @@ if st.button('Predict...'):
         target_keys2[0]
         programs_2
         
-    # with left_column2:
-    #     predict_1 = st.selectbox(
-    #         "Predict 1",
-    #         df['egitim_durumu'].unique()
-    #     )
-
-    # with right_column2:
-    #     predict_2 = st.selectbox(
-    #         "Predict 2",
-    #         df['egitim_durumu'].unique()
-    #         )
-
-
-
-
-
-
-# """
-# kurs_merkezi_ilcesi = st.sidebar.selectbox(
-#     "kurs_merkezi_ilcesi",
-#     df['kurs_merkezi_ilcesi'].unique()
-# )
-
-# # Using object notation
-# egitim_durumu = st.sidebar.selectbox(
-#     "egitim_durumu",
-#     df['egitim_durumu'].unique()
-# )
-# print(df.columns)
-
-# yas_araligi = st.sidebar.selectbox(
-#     "yas_araligi",
-#     df['yas_araligi'].unique()
-# )
-
-# calisma_durumu = st.sidebar.selectbox(
-#     "calisma_durumu",
-#     df['calisma_durumu'].unique()
-# )
-
-# tercih_sebebi = st.sidebar.selectbox(
-#     "tercih_sebebi",
-#     df['tercih_sebebi'].unique()
-# )
-
-# """
