@@ -4,6 +4,7 @@ from sklearn import preprocessing
 import pickle
 import xgboost as xgb
 import numpy as np
+from PIL import Image
 
 st.set_page_config(
     page_title="Models",
@@ -43,11 +44,28 @@ def label_encoding(df, target):
         
     return df, target_mapping ,encode_mapping
 
-# df = load_data('data/clean_ismek.csv')
+
 df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
 
+st.markdown("# 🎈 İSMEK Kurs Öneri Sistemi" )
 
-st.write("# Welcome to Streamlit! 👋")
+
+col1, col2= st.columns([4, 3] ,  gap = 'small')
+
+with col2:
+    st.write('\n')
+    col2.image('Final_Project/streamlit/pages/hobipicture.jpg')
+
+with col1:
+    st.write('\n')
+    st.write('\n')
+
+    st.write(
+    """
+       ### Verilen kriterleri doldurarak size uygun bir kurs önerisi alabilirsiniz 🙂
+
+    """
+    )
 
 
 df_f2f = df[df['kurs_merkezi'] != 'Uzaktan Egitim'].copy()
