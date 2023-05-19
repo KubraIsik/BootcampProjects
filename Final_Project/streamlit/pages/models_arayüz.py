@@ -45,7 +45,7 @@ def label_encoding(df, target):
     return df, target_mapping ,encode_mapping
 
 
-df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
+df = load_data('Final_Project/streamlit/data/clean_ismek_turkce.csv')
 
 st.markdown("# 🎈 İSMEK Kurs Öneri Sistemi" )
 
