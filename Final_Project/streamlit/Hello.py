@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(
-    page_title="Hello",
+    page_title="Veri Analizi",
     page_icon="👋",
 )
 
@@ -32,8 +32,6 @@ with col1:
     """
     )
 
-st.sidebar.success("Select a demo above.")
-
 df = load_data('Final_Project/streamlit/data/clean_ismek.csv')
 
 
@@ -44,7 +42,7 @@ color_columns = ['Seçiniz','egitim_durumu', 'calisma_durumu', 'hak_edilen_belge
 # Or even better, call Streamlit functions inside a "with" block:
 with left_column:
     option = st.selectbox(
-    'Which number do you like best?',
+    '1. Değişken',
     df.columns)
 
 try:
@@ -60,7 +58,7 @@ except:
 
 with right_column:
     option2 = st.selectbox(
-    'Which number do you like best2?',
+    '2. Değişken',
     color_columns)
 
 

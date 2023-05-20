@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 
 st.set_page_config(
-    page_title="Models",
+    page_title="Modeller",
     page_icon="👺",
 )
 
@@ -95,7 +95,7 @@ left_column, right_column = st.columns(2)
 
 with left_column:
     egitim_durumu = st.selectbox(
-        "egitim_durumu",
+        "Eğitim Durumu",
         df['egitim_durumu'].unique()
     )
 
@@ -103,31 +103,31 @@ with left_column:
 
 with left_column:
     yas_araligi = st.selectbox(
-        "yas_araligi",
+        "Yaş aralığı",
         df['yas_araligi'].unique()
     )
 
 
 with right_column:
     calisma_durumu = st.selectbox(
-        "calisma_durumu",
+        "Çalışma Durumu",
         df['calisma_durumu'].unique()
     )
 
 with right_column:
     tercih_sebebi = st.selectbox(
-        "tercih_sebebi",
+        "Tercih Sebebi",
         df['tercih_sebebi'].unique()
     )
 
 
 kurs_merkezi_ilcesi = st.selectbox(
-    "kurs_merkezi_ilcesi",
+    "Kurs Merkezi İlçesi",
     df['kurs_merkezi_ilcesi'].unique()
 )
 
 kurs_merkezi = st.selectbox(
-    "kurs_merkezi",
+    "Kurs Merkezi",
     df[df.kurs_merkezi_ilcesi == kurs_merkezi_ilcesi].kurs_merkezi.unique()
 )
 
@@ -149,7 +149,7 @@ predict_df = pd.DataFrame(input_list, columns= model.feature_names_in_)
 
 
 
-if st.button('Predict...'):
+if st.button('Uygun sonuçları getir'):
 
     ypred = model.predict(predict_df)
     y_pred_proba = model.predict_proba(predict_df)
@@ -179,8 +179,8 @@ if st.button('Predict...'):
 
 
     
-    st.success(f"Onerilen ilk alan : **{target_keys1[0]}** 👉👉 Sertifika alma ihtimali :**%{int(y_pred_proba_haketme_class1[:,1][0])}**")
-    st.success(f"Onerilen ikinci alan : **{target_keys2[0]}** 👉👉 Sertifika alma ihtimali :**%{int(y_pred_proba_haketme_class2[:,1][0])}**")
+    st.success(f"Önerilen ilk alan : **{target_keys1[0]}** 👉👉 Sertifika alma ihtimali :**%{int(y_pred_proba_haketme_class1[:,1][0])}**")
+    st.success(f"Önerilen ikinci alan : **{target_keys2[0]}** 👉👉 Sertifika alma ihtimali :**%{int(y_pred_proba_haketme_class2[:,1][0])}**")
 
 
     filter1 = df_f2f_top5_back_up['alan'] == target_keys1[0]
