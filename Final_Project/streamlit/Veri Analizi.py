@@ -42,7 +42,7 @@ color_columns = ['Seçiniz','egitim_durumu', 'calisma_durumu', 'hak_edilen_belge
 # Or even better, call Streamlit functions inside a "with" block:
 with left_column:
     option = st.selectbox(
-    '1. Değişken',
+    'Değişken 1',
     df.columns)
 
 try:
@@ -58,7 +58,7 @@ except:
 
 with right_column:
     option2 = st.selectbox(
-    '2. Değişken',
+    'Değişken 2',
     color_columns)
 
 
