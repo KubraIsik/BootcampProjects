@@ -1,18 +1,18 @@
 <img width="522" alt="ismek_photo" src="https://github.com/team-pikachuuuu/BootcampProjects/assets/97554694/23e5643d-5cce-4959-9d2d-4efa64ff5595">
 
 
-Kodluyoruz ve İBB iş birliği ile yapılan K152. Zemin İstanbul Bootcamp final projesinde İSMEK verileri incelenmiştir, veri analizleri yapılmıştır ve biri kullanıcı için diğeri ise kurs merkezi için olmak üzere 2 farklı model geliştirilmiştir. 
+Kodluyoruz ve İBB iş birliği ile gerçekleştirilen K152. Zemin İstanbul Veri Bilimi Python Bootcamp final projesinde İSMEK verileri incelenmiştir, veri analizleri yapılmıştır ve biri kullanıcı diğeri ise kurs merkezi için olmak üzere 2 farklı makine öğrenmesi modeli geliştirilmiştir. 
 
-## Data 
-[Data Linki](https://data.ibb.gov.tr/dataset/2019-2020-yillari-arasindaki-ismek-egitim-alan-vatandas-verisi/resource/acc4c5d6-7654-48fb-a460-bffc6050f1b2)
+## Projede kullanılan Veri Seti 
+[Veri Seti Linki](https://data.ibb.gov.tr/dataset/2019-2020-yillari-arasindaki-ismek-egitim-alan-vatandas-verisi/resource/acc4c5d6-7654-48fb-a460-bffc6050f1b2)
 
-**Verilen özelliklerin kısa açıklamaları:** 
+**Veri setinde bulunan özelliklerin(features) kısa açıklamaları:** 
 
 * **Dönem:** 2019-2020 <br/>
 * **Kurs Merkezi İlçesi:** 37 ilçe <br/>
 * **Kurs Merkezi:** 190 kurs merkezi <br/>
 * **Alan:** 33 alan <br/>
-* **Program:** 541 program <br/>
+* **Program:** 541 kurs program <br/>
 * **Çalışma Durumu:** çalışan, öğrenci, çalışmayan, emekli <br/>
 * **Hak Edilen Belge Tipi:** İsmek Sertifika, MEB Sertifika, hak kazanamadı <br/>
 * **Engel Durumu:** engelli olmayanlar & engel türleri <br/>
